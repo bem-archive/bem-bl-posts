@@ -1,0 +1,106 @@
+﻿== b-icon: Абстрактная иконка
+
+Блок  ##b-icon## создаёт контейнет для картинки на странице. По умолчанию в контейнере выводится однопиксельный прозрачный gif.
+
+=== Использование блока
+Чтобы использовать блок, нужно задать следующий bemjson:
+
+%%hl js
+{
+	block: 'b-icon'
+}
+%%
+
+На странице он превратится в следующийi html:
+
+%%hl xml
+<img class="b-icon" src="'//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif" alt=""/>
+%%
+
+Изменить картинку можно двумя способами:
+
+ * через url
+ * через дополнительный модификатор и css
+
+==== Изменение картинки через url
+
+**bemjson**:
+
+%%hl js
+{
+	block: 'b-icon',
+	url: 'http://yandex.st/lego/_/Kx6F6RQnQFitm0qRxX7vpvfP0K0.png',
+	alt: 'Моя Иконка'
+}
+%%
+
+Этот способ рекомендуется для добавления одиночных картинок.
+
+==== Изменение картинки через дополнительный модификатор и css
+
+**bemjson**:
+
+%%hl js
+{
+	block: 'b-icon',
+	mods: { action: 'images' }
+
+}
+%%
+
+**css**:
+
+%%html
+<pre>
+.b-icon_action_images
+{
+	width: 16px;
+	height: 16px;
+
+	background: url(//yandex.st/lego/_/ExOJSanIrX2IAis4l5gO2uX6M1E.png) no-repeat;
+}
+</pre>
+%%
+
+css для нового модификатора нужно положить на уровень переопределения на сайте, например: blocks/b-icon/b-icon.css
+
+Этот способ дает возможность использовать спрайты, добавляя различные модификаторы иконкам.
+
+=== Реализация блока
+
+При описании реализации использованы базовые термины ##bemhtml##: TODO ссылка на пост о базовых понятиях bemhtml.
+
+В файле ((https://github.com/bem/bem-bl/blob/master/blocks-desktop/b-icon/b-icon.bemhtml b-icon.bemhtml))
+написаны шаблоны по двум модам: ##tag## и ##attrs##. Шаблон по моде tag требует строку с именем тега.
+Напомним, что значение моды tag по умолчанию — 'div'.
+
+В шаблоне по моде ##attrs## создается хеш атрибутов. В фигурных скобках написан чистый js,
+задающий значения атрибутов по умолчанию и вычисляющий пользовательские атрибуты.
+
+**b-icon.bemhtml**
+
+%%hl js
+b-icon {
+
+	tag: 'img'
+	attrs: {
+
+		var ctx = this.ctx,
+		a = { src: '//yandex.st/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif', alt: '' },
+		props = ['alt', 'width', 'height'], p;
+
+		ctx.url && (a.src = ctx.url);
+		while(p = props.shift()) ctx[p] && (a[p] = ctx[p]);
+
+		return a;
+	}
+
+}
+
+Первые фигурные скобки объединяют шаблоны разных мод для одного блока. Запись с ними идентична следующему:
+
+%%hl js
+block b-icon,  tag: 'img'
+
+block b-icon,  attrs: { ... }
+%%
