@@ -79,7 +79,8 @@ content: [
 %%
 
  * тег ##<meta>## для использования IE9 (и выше) в максимальном compatibility режиме
-%%hl
+
+%%hl js
 content : [
 	...
 	{
