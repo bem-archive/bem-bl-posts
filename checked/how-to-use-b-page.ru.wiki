@@ -8,7 +8,7 @@
 ((http://bem.github.com/bem-bl/sets/common-desktop/b-page/b-page.ru.html bem.github.com/.../b-page.ru.html))
 
 Пример использования блока ##b-page## есть на тестовом проекте
-##bem-bl-test##: https://github.com/bem/bem-bl-test/blob/master/pages/example/example.bemjson.js \\
+##bem-bl-test##: ((https://github.com/bem/bem-bl-test/blob/master/pages/example/example.bemjson.js)) \\
 Также пример использования можно найти в
 ((https://github.com/bem/bem-bl/tree/master/blocks-desktop/b-page/examples папке ##examples## блока)):
 
@@ -79,7 +79,8 @@ content: [
 %%
 
  * тег ##<meta>## для использования IE9 (и выше) в максимальном compatibility режиме
-%%hl
+
+%%hl js
 content : [
 	...
 	{
