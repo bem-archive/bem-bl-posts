@@ -15,7 +15,17 @@
 %%
 
 Свойство ##url## преобразуется в атрибут ##href##. Свойства ##title## и ##target## —
-в соотвествующие атрибуты.
+в соотвествующие атрибуты.\\
+В результате получается такой HTML:
+
+%%hl xml
+<a
+    class="b-link"
+    href="http://company.yandex.ru"
+    title="Click here!" target="_blank">
+        The best company all over the world
+</a>
+%%
 
 Все эти преобразования возможны благодаря bemhtml-шаблону блока:
 
@@ -63,6 +73,17 @@ block b-link {
 }
 %%
 
+Это даст следующий HTML:
+
+%%hl xml
+<a
+    class="b-link b-link_pseudo_yes i-bem"
+    onclick="return {'b-link':{}}"
+    href="http://ya.ru">
+    <span class="b-link__inner">Pseudo link</span>
+</a>
+%%
+
 Ссылка без свойства ##url## представлена в HTML тегом ##<span>##.\\
 В этом случае входные данные (bemjson) будут такими:
 
@@ -72,6 +93,14 @@ block b-link {
     mods: { pseudo: 'yes' },
     content: 'Псевдоспан'
 }
+%%
+
+%%hl xml
+<span
+    class="b-link b-link_pseudo_yes i-bem"
+    onclick="return {'b-link':{}}">
+    <span class="b-link__inner">Псевдоспан</span>
+</span>
 %%
 
 bemhtml-шаблон для блока ##b-link## с модификатором ##pseudo## дополняет
@@ -184,10 +213,23 @@ block b-link, elem inner, tag: 'span'
         },
         {
             elem: 'inner',
-           content: 'Псевдо-ссылка с иконкой'
+            content: 'Псевдо-ссылка с иконкой'
         }
     ]
 }
+%%
+
+%%hl xml
+<a
+    class="b-link b-link_pseudo_yes b-link_inner_yes i-bem"
+    onclick="return {'b-link':{}}"
+    href="http://ya.ru">
+        <img
+            class="b-icon b-link__icon"
+            src="http://yandex.st/lego/_/Kx6F6RQnQFitm0qRxX7vpvfP0K0.png"
+            alt="Иконка Серпа"/>
+        <span class="b-link__inner">Псевдо-ссылка с иконкой</span>
+</a>
 %%
 
 ===Модификатор — mods: { disabled: 'yes' }
