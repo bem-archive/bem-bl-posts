@@ -1,0 +1,56 @@
+﻿== Использование и реализация блока b-layout-table
+
+Блок ##b-layout-table## — таблица с 100% шириной, для создания раскладки.
+
+Bemhtml шаблон блока выводит таблицу, строки и ячейки со всеми необходимыми атрибутами.
+%%hl js
+block b-layout-table {
+    tag: 'table'
+    elem row, tag: 'tr'
+    this.elem === 'cell' || this.elem === 'gap' {
+        tag: 'td'
+        attrs: {
+
+            var ctx = this.ctx,
+                a = {},
+                props = ['colspan', 'rowspan'], p;
+
+            while(p = props.shift()) ctx[p] && (a[p] = ctx[p]);
+
+            return a;
+        }
+    }
+}%%
+Ячейки блока могут быть представлены либо elem: 'cell' либо elem: 'gap'.
+Элементы cell предназначены для вложения контента, а элементы gap служат в качестве распорок.
+
+Давайте рассмотрим bemjson блока.
+%%hl js
+{
+    block: 'b-layout-table',
+    mods: { layout: '60-40'},
+    content: {
+        elem: 'row',
+        content: [
+            {
+                elem: 'gap'
+            },
+            {
+                elem: 'cell',
+                content: {
+                    elem: 'inner',
+                    content: 'First cell'
+                }
+            },
+            {
+                elem: 'cell',
+                elemMods: { position: 'r'},
+                content: 'Second cell'
+            }
+        ]
+    }
+}%%
+Блок не задает ширины ячейкам. Чтобы задать ширину ячейкам нужно создать модификатор блока, например — mods: { layout: '60-40'} и ячейке/ячейкам, например — elemMods: { position: 'r'}.
+Далее используя каскад создаем собственную раскладочную таблицу.
+
+
