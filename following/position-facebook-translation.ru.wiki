@@ -1,0 +1,21 @@
+﻿Новое в мире ##БЭМ## за последнее время:
+
+=== Социальщина
+Мы сделали ((http://www.facebook.com/groups/209713935765634/ группу в Facebook)), присылайте заявки.
+
+=== Актуальные задачи
+В трекере библиотеки bem-bl всегда есть задачи. Сейчас важно перевести
+существующую документацию на английский, вот список тасков: ((https://github.com/bem/bem-bl/issues?labels=RU-EN+translation&sort=created&direction=desc&state=open&page=1))
+
+Workflow работы такой:
+ 1. Вы делаете себе fork ((https://github.com/bem/bem-bl репозитория bem-bl))\\
+    ((http://help.github.com/fork-a-repo/ Инструкция про Fork))
+ 1. Правите (или создаёте) документацию на английском\\
+Английское описание блоков, элементов и модификаторах лежит в файлах *.en.title.txt
+и *.en.wiki этих блоков, элементов и модификаторов.
+ 1. Пушите изменения в свой fork
+ 1. Делаете Pull Request, чтобы ваши изменения были приняты в основном репозитории\\
+ ((http://help.github.com/send-pull-requests/ Инструкция про Pull Request'ы))
+
+=== Вакансия
+У нас в команде есть ((http://company.yandex.ru/job/vacancies/dev_group_interface.xml вакансия разработчика интерфейсов)). Но сначала надо сделать Pull Request.
