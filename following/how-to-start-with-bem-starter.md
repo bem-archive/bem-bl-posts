@@ -638,7 +638,7 @@ https://gist.github.com/4195773
 написан с использованием
 [декларативного фреймворка из блока i-bem](http://bem.github.com/bem-bl/sets/common-desktop/i-bem/i-bem.ru.html),
 у меня есть возможность изменить (переопределить или доопределить) поведение блока
-на своём уровне.
+на своём уровне.<sup>[5](#ref5)</sup>
 
     bem create block -l desktop.blocks -T js box
     
@@ -667,13 +667,22 @@ https://gist.github.com/4195865
     }
 https://gist.github.com/4195879
 
+## The End
+
+TODO
+
 ---------------------
 <sup><a name="ref1"></a>1</sup> Репозиторий описан в ревизии
-[ebf605bc2a](https://github.com/bem/project-stub/commit/ebf605bc2ad031b73fef562df10d23a8b1edd63c)
+[ebf605bc2a](https://github.com/bem/project-stub/commit/ebf605bc2ad031b73fef562df10d23a8b1edd63c).
+
 <sup><a name="ref2"></a>2</sup> Репозиторий описан в ревизии
-[4e24d717e6](https://github.com/bem/full-stack-starter/commit/4e24d717e614aa3d7d3c060a6301b68ff6ec6424)
+[4e24d717e6](https://github.com/bem/full-stack-starter/commit/4e24d717e614aa3d7d3c060a6301b68ff6ec6424).
+
 <sup><a name="ref3"></a>3</sup> Подробнее о `bem server` можно узнать из докладов
 Владимира Алаева [Новые возможности bem tools](http://events.yandex.ru/talks/289/) и
 Сергея Белова [bem server: Система сборки фронтенда](http://events.yandex.ru/talks/154/).
+
 <sup><a name="ref4"></a>4</sup> Информацию о синтаксисе шаблонизатора BEMHTML можно найти в референсе
 ((https://github.com/bem/bemhtml/blob/master/common.docs/reference/reference.ru.md))
+
+<sup><a name="ref5"></a>5</sup> Об особенностях БЭМ-JavaScript можно узнать из доклада Владимира Варанкина «[БЭМ и JavaScript: Зачем мы написали JS-фреймворк?](http://events.yandex.ru/talks/290/)»
