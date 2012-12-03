@@ -29,28 +29,34 @@
 command line интерфейсом для оперирования БЭМ-сущностями и сборки проекта.
 Инструкция по установке есть в описании репозитория.
 
-Я буду использовать команду `bem create` для создания файлов технологий. Кроме
-того, вы увидите, как работает `bem server` — сборщик страниц на лету.
+Будут использоваться команды:
+ * `bem create`<br/>
+ создаёт файлы блоков, элементов и модификаторов
+ * `bem server`<br/>
+ сервер, пересобирающий части проекта на лету (при наличии изменений)
+ * `bem make`<br/>
+ собирает весь проект (для выкатки в продакшен)
 
 ## Болванки для создания проекта
 Создание БЭМ-проекта можно начинать с копирования специальных репозиториев, где
 всё настроено для использования bem tools.
 
 ### Как устроен project-stub
-Один из таких репозиториев -- [project-stub](https://github.com/bem/project-stub)*1. Это минимальная конфигурация для использования БЭМ-сборки.
+Один из таких репозиториев -- [project-stub](https://github.com/bem/project-stub)<sup>[1](#ref1)</sup>.
+Это минимальная конфигурация для использования БЭМ-сборки.
 
-В проекте есть файл ##packadge.json##, подтягивающий необходимые для проекта
-npm-пакеты. В нашем случае это пакет ##bem## для локального использования.
+В проекте есть файл `packadge.json`, подтягивающий необходимые для проекта
+npm-пакеты. В нашем случае это пакет `bem` для локального использования.
 
-Директория ##.bem## используется для хранения конфигураций уровня
+Директория `.bem` используется для хранения конфигураций уровня
 переопределения.<br/>
-По БЭМ уровни переопределения -- это сам проект, директории с блоками и
-дирректории с бандлами (страницами)).
+По БЭМ уровни переопределения — это сам проект, директории с блоками и
+дирректории с бандлами (страницами).
 
 #### Конфигурация проекта
 Для уровня проекта необходим конфигурирующий файл
-##[make.js](https://github.com/bem/project-stub/blob/master/.bem/make.js)##.
-Он сообщает командам ##bem make## и ##bem sever## информацию о том, как собирать
+[make.js](https://github.com/bem/project-stub/blob/master/.bem/make.js).
+Он сообщает командам `bem make` и `bem sever` информацию о том, как собирать
 проект.<br/>
 В этом примере задаются директории блоков и бандлов, при помощи RegExp-based
 синтаксиса, устанавливаются необходимые библиотеки и перечисляются технологии,
@@ -58,9 +64,8 @@ npm-пакеты. В нашем случае это пакет ##bem## для л
 
 #### Используемые библиотеки
 На данный момент проект использует 2 библиотеки:
-  * [bemhtml](https://github.com/bem/bemhtml)<br/>
-    В библиотеке есть один блок, подключение которого позволяет любому проекту
-    использовать шаблонизатор BEMHTML.
+ * [bemhtml](https://github.com/bem/bemhtml)<br/>
+    В библиотеке есть один блок, подключение которого позволяет любому проекту использовать шаблонизатор BEMHTML.
  * [bem-bl](https://github.com/bem/bem-bl)<br/>
    Библиотека простых блоков.
 
@@ -71,7 +76,7 @@ npm-пакеты. В нашем случае это пакет ##bem## для л
 Уровни для блоков называются
 [common.blocks](https://github.com/bem/project-stub/tree/master/common.blocks)
 и [desktop.blocks](https://github.com/bem/project-stub/tree/master/desktop.blocks).<br/>
-Настройки уроней находятся в файлах ##.bem/level.js##. Для этих уровней они
+Настройки уровней находятся в файлах ##.bem/level.js##. Для этих уровней они
 одинаковые, наследуются от одного и того же описания уровня
 [.bem/levels/blocks.js](https://github.com/bem/project-stub/blob/master/.bem/levels/blocks.js) и ничего не переопределяют. Список технологий,
 используемых блоками, в проекте ##project-stub## обнулён, на базе этого проекта может быть
@@ -81,54 +86,53 @@ npm-пакеты. В нашем случае это пакет ##bem## для л
 технологии
 [deps.js](https://github.com/bem/project-stub/blob/master/common.blocks/i-bem/__dom/i-bem__dom.deps.js):
 
-%%hl js
-({
-  mustDeps: { block: 'bemhtml' },
-  noDeps: { block: 'i-bem', elems: 'html' }
-})
-%%
+    ({
+      mustDeps: { block: 'bemhtml' },
+      noDeps: { block: 'i-bem', elems: 'html' }
+    })
 
-Такая зависимость позволяет подключить ко всем страницам шаблонизатор
-##BEMHTML##. Он нужен для любой версии сайта, поэтому находится на уровне
-##common.blocks##.<br/>
-Директива ##noDeps## исключает подключение шаблонизатора из библиотеки ##bem-bl##.
+Такая зависимость позволяет подключить ко всем страницам шаблонизатор `BEMHTML`. Он нужен для любой версии сайта, поэтому находится на уровне
+`common.blocks`.<br/>
+Директива `noDeps` исключает подключение шаблонизатора из библиотеки `bem-bl`.
 Это временная мера на период, пока шаблонизатор переезжает в отдельную библиотеку,
 но сохраняется обратная совместимость.
 
-На уровне ##desktop.blocks## определён блок
-[b-page](https://github.com/bem/project-stub/tree/master/desktop.blocks/b-page). Его зависимости обеспечивают подключение кода, который инициализирует
+На уровне `desktop.blocks` определён блок
+[b-page](https://github.com/bem/project-stub/tree/master/desktop.blocks/b-page).
+Его зависимости обеспечивают подключение кода, который инициализирует
 JavaScript всех блоков по domReady:
 
-%%hl js
-({
-    mustDeps: [
-        {
-            block: 'i-bem',
-            elem: 'dom',
-            mods: { init: 'auto' }
-        },
-        { block: 'bemhtml' }
-    ],
-    noDeps: [
-        {
-            block: 'i-bem',
-            elem: 'html'
-        }
-    ]
-})
-%%
+    ({
+        mustDeps: [
+            {
+                block: 'i-bem',
+                elem: 'dom',
+                mods: { init: 'auto' }
+            },
+            { block: 'bemhtml' }
+        ],
+        noDeps: [
+            {
+                block: 'i-bem',
+                elem: 'html'
+            }
+        ]
+    })
 
-Уровень переопределения ##desktop.bundles## содержит входные данные для страниц
+Уровень переопределения `desktop.bundles` содержит входные данные для страниц
 и настройки сборки.<br/>
 Как и все настройки уровня, конфигурация сборки содержится в файле
-[.bem/level.js](https://github.com/bem/project-stub/blob/master/desktop.bundles/.bem/level.js) уровня. Там прописано наследование от общего файла
+[.bem/level.js](https://github.com/bem/project-stub/blob/master/desktop.bundles/.bem/level.js) уровня.
+Там прописано наследование от общего файла
 для бандлов [.bem/levels/bundles.js](https://github.com/bem/project-stub/blob/master/.bem/levels/bundles.js)
 и собственные доопределения.<br/>
 Там же вы можете видеть список уровней переопределения, блоки которых
 будут использоваться для сборки страниц этого бандла.
 
 #### Настройки сборки
-В общем конфигурационном файле про бандлы [.bem/levels/bundles.js](https://github.com/bem/project-stub/blob/master/.bem/levels/bundles.js) указано, по каким шаблонам собирать различные технологии.
+В общем конфигурационном файле про бандлы
+[.bem/levels/bundles.js](https://github.com/bem/project-stub/blob/master/.bem/levels/bundles.js) указано,
+по каким шаблонам собирать различные технологии.
 
 ### Как устроен full-stack-start
 Репозиторий [full-stack-starter](https://github.com/bem/full-stack-starter)*2
@@ -412,9 +416,8 @@ $ bem create block -l desktop.blocks/ -T deps.js goods
 (https://gist.github.com/4177350)
 
 ---------------------
-*1. Репозиторий описан в ревизии
-((https://github.com/bem/project-stub/commit/ebf605bc2ad031b73fef562df10d23a8b1edd63c
-ebf605bc2a))
+<sup><a name="ref1"></a>1</sup> Репозиторий описан в ревизии
+[ebf605bc2a](https://github.com/bem/project-stub/commit/ebf605bc2ad031b73fef562df10d23a8b1edd63c)
 *2. Репозиторий описан в ревизии
 ((https://github.com/bem/full-stack-starter/commit/4e24d717e614aa3d7d3c060a6301b68ff6ec6424
 4e24d717e6))
