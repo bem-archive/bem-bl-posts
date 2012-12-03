@@ -683,6 +683,6 @@ TODO
 Сергея Белова [bem server: Система сборки фронтенда](http://events.yandex.ru/talks/154/).
 
 <sup><a name="ref4"></a>4</sup> Информацию о синтаксисе шаблонизатора BEMHTML можно найти в референсе
-((https://github.com/bem/bemhtml/blob/master/common.docs/reference/reference.ru.md))
+https://github.com/bem/bemhtml/blob/master/common.docs/reference/reference.ru.md
 
 <sup><a name="ref5"></a>5</sup> Об особенностях БЭМ-JavaScript можно узнать из доклада Владимира Варанкина «[БЭМ и JavaScript: Зачем мы написали JS-фреймворк?](http://events.yandex.ru/talks/290/)»
