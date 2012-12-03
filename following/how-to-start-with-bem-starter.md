@@ -91,7 +91,8 @@ npm-пакеты. В нашем случае это пакет `bem` для ло
       noDeps: { block: 'i-bem', elems: 'html' }
     })
 
-Такая зависимость позволяет подключить ко всем страницам шаблонизатор `BEMHTML`. Он нужен для любой версии сайта, поэтому находится на уровне
+Такая зависимость позволяет подключить ко всем страницам шаблонизатор `BEMHTML`.
+Он нужен для любой версии сайта, поэтому находится на уровне
 `common.blocks`.<br/>
 Директива `noDeps` исключает подключение шаблонизатора из библиотеки `bem-bl`.
 Это временная мера на период, пока шаблонизатор переезжает в отдельную библиотеку,
@@ -134,20 +135,20 @@ JavaScript всех блоков по domReady:
 [.bem/levels/bundles.js](https://github.com/bem/project-stub/blob/master/.bem/levels/bundles.js) указано,
 по каким шаблонам собирать различные технологии.
 
-### Как устроен full-stack-start
-Репозиторий [full-stack-starter](https://github.com/bem/full-stack-starter)*2
+### Как устроен full-stack-starter
+Репозиторий [full-stack-starter](https://github.com/bem/full-stack-starter)<sup>[2](#ref2)</sup>
 имеет такую же архитектуру, но немного расширен для использования полного стека
 БЭМ.
 
 #### Настройки уровней с блоками
 Для уровней с блоками здесь определено, по каким шаблонам должны создаваться
-файлы технологий блоков.Это сделано в файле
+файлы технологий блоков. Это сделано в файле
 [./bem/levels/level.js](https://github.com/bem/full-stack-starter/blob/master/.bem/levels/blocks.js).<br/>
 Шаблон определяет, с каким содержимым создастся файл блока, элемента или
-модификатора при использовании команды ##bem create##.
+модификатора при использовании команды `bem create`.<br/>
 Для большинства технологий используются дефолтные шаблоны из bem tools. Для
-JavaScript файлов блоков -- шаблон из библиотеки bem-bl, а для файлов с BEMHTML
--- шаблон из библиотеки bemhtml.
+JavaScript файлов блоков — шаблон из библиотеки bem-bl, а для файлов с BEMHTML
+— шаблон из библиотеки bemhtml.
 
 Также определён дефолтный список технологий. Это те технологии, с которыми
 по-умолчанию создаётся новый блок.
@@ -155,9 +156,10 @@ JavaScript файлов блоков -- шаблон из библиотеки b
 #### Настройки уровней с бандлами
 Настройки уровней, хранящих собранные страницы изменены несильно. Изменения
 внесены в файл
-[./bem/levels/bundles.js](https://github.com/bem/full-stack-starter/blob/master/.bem/levels/bundles.js) и заключаются в определении дефолтной технологии для
+[./bem/levels/bundles.js](https://github.com/bem/full-stack-starter/blob/master/.bem/levels/bundles.js)
+и заключаются в определении дефолтной технологии для
 страниц.<br/>
-Проект расчитан на описание всех страниц в ##bemjson##.
+Проект расчитан на описание всех страниц в `bemjson`.
 
 Шаблон технологии bemjson, использующийся при создании новых страниц, также
 размещён в проекте в файле
@@ -166,12 +168,10 @@ JavaScript файлов блоков -- шаблон из библиотеки b
 ## Создание собственного репозитория проекта
 Новый проект создаётся простым копированием репозитория:
 
-%%hl xml
-$ git clone git://github.com/bem/full-stack-starter.git my-pretty-project
-$ cd my-pretty-project/
-$ rm -rf .git
-$ git init
-%%
+    $ git clone git://github.com/bem/full-stack-starter.git my-pretty-project
+    $ cd my-pretty-project/
+    $ rm -rf .git
+    $ git init
 
 Затем проект нужно собрать. Для этого запускается команда
 
@@ -418,9 +418,8 @@ $ bem create block -l desktop.blocks/ -T deps.js goods
 ---------------------
 <sup><a name="ref1"></a>1</sup> Репозиторий описан в ревизии
 [ebf605bc2a](https://github.com/bem/project-stub/commit/ebf605bc2ad031b73fef562df10d23a8b1edd63c)
-*2. Репозиторий описан в ревизии
-((https://github.com/bem/full-stack-starter/commit/4e24d717e614aa3d7d3c060a6301b68ff6ec6424
-4e24d717e6))
+<sup><a name="ref2"></a>2</sup> Репозиторий описан в ревизии
+[4e24d717e6](https://github.com/bem/full-stack-starter/commit/4e24d717e614aa3d7d3c060a6301b68ff6ec6424)
 *3 TODO: Вставить материалы про bem server
 *4 Информацию о синтаксисе шаблонизатора BEMHTML можно найти в референсе
 ((https://github.com/bem/bemhtml/blob/master/common.docs/reference/reference.ru.md))
