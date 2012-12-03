@@ -405,6 +405,88 @@ https://gist.github.com/4177292
         content: ...
 https://gist.github.com/4177350
 
+## Создание новых страниц
+
+Страницы — это тоже блоки, на своём уровне переопределения. Поэтому для
+их создания тоже можно воспользоваться командой `bem create`:
+
+    bem create block -l desktop.bundles contact
+    
+Флаг `-T` можно не указывать, потому что `bem create` благодаря настройкам
+уровня `desktop.bundles` знает, что создаваемые на этом уровне блоки
+должны быть представлены в технологии BEMJSON. Так, появляется файл
+`desktop.bundles/contact/contact.bemjson.js` с минимальным содержимым для
+страницы.
+
+Новую страницу можно посмотреть по адресу http://localhost:8080/desktop.bundles/contact/contact.html<br/>
+`bem server` соберёт её HTML, JS и CSS файлы в момент первого обращения.
+
+## Инкапсулирование логики блока
+На новой странице я тоже хочу разместить блок `head`. Можно скопировать его BEMJSON
+со страницы `index`. Но такое копирование будет копипастом, который сложно
+поддерживать.<br/>
+Вместо этого есть возможность задекларировать лишь присутствие блока `head` на странице:
+
+    {
+        block: 'head'
+    }
+https://gist.github.com/4195604
+
+Создание необходимой разметки в этом случае перекладывается на BEMHTML шаблон
+блока.
+
+    bem create block -l desktop.blocks -T bemhtml head
+
+В получившемся файле `desktop.blocks/head/head.bemhtml` нужно описать
+содержание блока в виде BEMJSON (то же самое, что было написано в `index.bemjson.js`):
+
+    block head {
+
+        content: {
+            block: 'layout',
+            ....
+https://gist.github.com/4195646
+
+Для корректного отображения вложенных блоков их нужно перечислить в зависимостях
+`head.deps.js`, которые тоже создаются при помощи `bem create`:
+
+    bem create block -l desktop.blocks -T deps.js head
+https://gist.github.com/4195666
+
+Информация о смешивании блока `head` с блоком `box` тоже должна быть
+записана в шаблон, но уже на языке мод шаблонизатора:
+
+    block head {
+
+       mix: [{ block: 'box'}]
+
+       content: {
+https://gist.github.com/4195689
+
+И, как всегда при упоминании нового блока в шаблоне, он должен быть
+добавлен в зависимости https://gist.github.com/4195694
+
+Теперь, когда декларация блока сократилась до его имени, BEMJSON
+страницы `index` тоже можно изменить:
+
+    ({
+        block: 'b-page',
+        title: 'index',
+        head: [
+            { elem: 'css', url: '_index.css', ie: false},
+            { elem: 'css', url: '_index.ie.css', ie: true },
+            { block: 'i-jquery', elem: 'core'},
+            { elem: 'js', url:'_index.js'},
+        ],
+        content: [
+            {
+                block: 'head'
+            },
+            ...
+        ]
+    })
+https://gist.github.com/4195706
+
 ---------------------
 <sup><a name="ref1"></a>1</sup> Репозиторий описан в ревизии
 [ebf605bc2a](https://github.com/bem/project-stub/commit/ebf605bc2ad031b73fef562df10d23a8b1edd63c)
