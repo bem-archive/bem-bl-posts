@@ -233,19 +233,20 @@ CSS.
 --help`.
 
 ## Использование блоков из библиотек
-Вложенные в ##layout## блоки поисковой формы и логотипа реализовывать
+Вложенные в `layout` блоки поисковой формы и логотипа реализовывать
 самостоятельно не нужно. Они уже реализованы в
 [библиотеке bem-bl](http://bem.github.com/bem-bl/index.ru.html), достаточно
 просто задекларировать их на странице.
 
 У каждого из блоков библиотеки есть своя страница. Например,
-[страница блока b-search](http://bem.github.com/bem-bl/sets/common-desktop/b-search/b-search.ru.html). Она описывает блок, а внизу можно найти несколько
-iframe с примерами его использования. По ссылке ##исходный код## можно найти тот
+[страница блока b-search](http://bem.github.com/bem-bl/sets/common-desktop/b-search/b-search.ru.html).
+Она описывает блок, а внизу можно найти несколько iframe с примерами его использования.
+По ссылке `исходный код` можно найти тот
 BEMJSON, который нужно вставить на страницу для использования блока.
 
 Для нашей страницы мы воспользуемся блоками
-##[b-search](http://bem.github.com/bem-bl/sets/common-desktop/b-search/b-search.ru.html)## и
-##[b-logo](http://bem.github.com/bem-bl/sets/common-desktop/b-logo/b-logo.ru.html)##.<br/>
+[b-search](http://bem.github.com/bem-bl/sets/common-desktop/b-search/b-search.ru.html) и
+[b-logo](http://bem.github.com/bem-bl/sets/common-desktop/b-logo/b-logo.ru.html).<br/>
 (https://gist.github.com/4175640)
 
 Картинку для логотипа можно взять
@@ -256,24 +257,20 @@ BEMJSON, который нужно вставить на страницу для
 Любой блок библиотеки можно доопределить (дописать) на своём уровне в любой
 технологии. Некоторые блоки специально написаны с учётом этой возможности.
 
-Например, используемый нами блок ##b-logo## предоставляет только нужную
+Например, используемый нами блок `b-logo` предоставляет только нужную
 разметку. CSS для неё каждый разработчик может написать сам, потому что всем
 нужна разная разметка.
 
 Доопределение блока ничем не отличается от создания блока на своём уровне.
 Единственное требование -- совпадение имён с библиотечным блоком.
 
-%%hl xml
-$ bem create block -l desktop.blocks/ -T css b-logo
-%%
+    $ bem create block -l desktop.blocks/ -T css b-logo
+Разметку для блока можно взять отсюда: https://gist.github.com/4175675
 
-Разметку для блока можно взять отсюда: (https://gist.github.com/4175675)
+То же самое для блока `b-search`:
 
-То же самое для блока ##b-search##:
-
-%%hl xml
-$ bem create block -l desktop.blocks/ -T css b-search
-%%
+    $ bem create block -l desktop.blocks/ -T css b-search
+https://gist.github.com/4195433
 
 #### Доопределение BEMHTML
 При необходимости изменить разметку, мы должны переопределить технологию блока
@@ -282,33 +279,27 @@ BEMHTML (шаблоны, отвечающие за создание размет
 Для данной страницы нужен дополнительный контейнер, чтобы сделать её
 центрированной.
 
-Создаём на своём уровне переопределения технологию ##BEMHTML## для блока
-##b-page##:
+Создаём на своём уровне переопределения технологию BEMHTML для блока
+`b-page`:
 
-%%hl xml
-$ bem create block -l desktop.blocks/ -T bemhtml b-page
-%%
+    $ bem create block -l desktop.blocks/ -T bemhtml b-page
 
-В получившемся файле ##desktop.blocks/b-page/b-page.bemhtml## нужно написать
-код, оборачивающий контент блока в дополнительный контейнер.
-(https://gist.github.com/4175742).*4
+В получившемся файле `desktop.blocks/b-page/b-page.bemhtml` нужно написать
+код, оборачивающий контент блока в дополнительный контейнер.<br/>
+https://gist.github.com/4175742 <sup>[4](#ref4)</sup>
 
 Для получившейся разметки создаются свои CSS-правила:
 
-%%hl xml
-$ bem create block -l desktop.blocks/ -T css b-page
-%%
+    $ bem create block -l desktop.blocks/ -T css b-page
 
-Контент для получившегося файла ##desktop.blocks/b-page/b-page.css## можно
-скопировать отсюда: (https://gist.github.com/4175763)
+Контент для получившегося файла `desktop.blocks/b-page/b-page.css` можно
+скопировать отсюда: https://gist.github.com/4175763
 
 А для того, чтобы блок шапки был заметен на странице, я задам ему border:
 
-%%hl xml
-$ bem create block -l desktop.blocks/ -T css head
-%%
-Контент для файла ##desktop.blocks/head/head.css##:
-(https://gist.github.com/4175776).
+    $ bem create block -l desktop.blocks/ -T css head
+
+Контент для файла `desktop.blocks/head/head.css`: https://gist.github.com/4175776.
 
 ## BEMHTML шаблоны
 В странице не обязательно полностью описывать всю структуру блока, т.к. у
@@ -414,5 +405,5 @@ $ bem create block -l desktop.blocks/ -T deps.js goods
 <sup><a name="ref3"></a>3</sup> Подробнее о `bem server` можно узнать из докладов
 Владимира Алаева [Новые возможности bem tools](http://events.yandex.ru/talks/289/) и
 Сергея Белова [bem server: Система сборки фронтенда](http://events.yandex.ru/talks/154/).
-*4 Информацию о синтаксисе шаблонизатора BEMHTML можно найти в референсе
+<sup><a name="ref4"></a>4</sup> Информацию о синтаксисе шаблонизатора BEMHTML можно найти в референсе
 ((https://github.com/bem/bemhtml/blob/master/common.docs/reference/reference.ru.md))
