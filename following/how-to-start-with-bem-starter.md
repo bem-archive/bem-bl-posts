@@ -175,20 +175,15 @@ JavaScript файлов блоков — шаблон из библиотеки 
 
 Затем проект нужно собрать. Для этого запускается команда
 
-%%hl xml
-make
-%%
+    make
 
 Это занимает некоторое время, потому что именно в этот момент в директорию
 проекта устанавливаются все необходимые npm-пакеты.<br/>
 В конце вы увидите следующее сообщение:
 
-%%hl xml
-info: Server is listening on port 8080. Point your browser to
-http://localhost:8080/
-%%
+    info: Server is listening on port 8080. Point your browser to http://localhost:8080/
 
-На вашем компьютере запустился ##bem server##*3 -- инструмент для разработки,
+На вашем компьютере запустился `bem server`<sup>[3](#ref3)</sup> — инструмент для разработки,
 который будет автоматически пересобирать ваш проект, если вы внесете в него
 изменения.
 
@@ -420,6 +415,8 @@ $ bem create block -l desktop.blocks/ -T deps.js goods
 [ebf605bc2a](https://github.com/bem/project-stub/commit/ebf605bc2ad031b73fef562df10d23a8b1edd63c)
 <sup><a name="ref2"></a>2</sup> Репозиторий описан в ревизии
 [4e24d717e6](https://github.com/bem/full-stack-starter/commit/4e24d717e614aa3d7d3c060a6301b68ff6ec6424)
-*3 TODO: Вставить материалы про bem server
+<sup><a name="ref3"></a>3</sup> Подробнее о `bem server` можно узнать из докладов
+Владимира Алаева [Новые возможности bem tools](http://events.yandex.ru/talks/289/) и
+Сергея Белова [bem server: Система сборки фронтенда](http://events.yandex.ru/talks/154/).
 *4 Информацию о синтаксисе шаблонизатора BEMHTML можно найти в референсе
 ((https://github.com/bem/bemhtml/blob/master/common.docs/reference/reference.ru.md))
