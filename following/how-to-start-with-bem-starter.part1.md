@@ -1,4 +1,4 @@
-# Быстрое создание БЭМ-проекта
+# Попробуй БЭМ на вкус!
 Эта статья рассказывает о том, как создать проект с использованием
 БЭМ-технологий.<br/>
 Мы шаг за шагом создадим
@@ -476,3 +476,6 @@ https://github.com/bem/bemhtml/blob/master/common.docs/reference/reference.ru.md
 
 <sup><a name="ref4"></a>4</sup> Об особенностях БЭМ-JavaScript можно узнать из доклада
 Владимира Варанкина «[БЭМ и JavaScript: Зачем мы написали JS-фреймворк?](http://events.yandex.ru/talks/290/)»
+
+<sup>creadits</sup> За подготовку разметки сайта большое спасибо
+[tyv](https://github.com/tyv) и [gela-d](https://github.com/gela-d).
