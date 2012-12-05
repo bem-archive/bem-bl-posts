@@ -224,17 +224,17 @@ https://gist.github.com/4176078
 код, который превратит JSON с данными в элементы блока. А также, пользуясь
 модой `tag` указать, какими DOM-элементами представить блок и его элементы.
 
-block goods {
+    block goods {
 
-    tag: 'ul'
+        tag: 'ul'
     
-    ...
+        ...
     
-    elem item, tag: 'li'
+        elem item, tag: 'li'
 
-    elem title, tag: 'h3'
+        elem title, tag: 'h3'
 
-}
+    }
 https://gist.github.com/4176118
 
 Шаблон может создавать не только элементы блока, но и другие блоки. Например,
