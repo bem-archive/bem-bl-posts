@@ -439,6 +439,8 @@ https://gist.github.com/4202651
 
 Получается блок со стрелочкой, которая умеет сворачивать и разворачивать его.
 
+<img src="http://img-fotki.yandex.ru/get/4603/14441195.26/0_6f0c8_b65eea6_L.jpg" width="318" height="264" title="Стрелочка" alt="Стрелочка" border="0"/>
+
 ### Доопределение JavaScript
 Мне недостаточно JavaScript-функциональности блока `box`. Я хочу, чтобы он
 сворачивался не только по вертикали, но и по горизонтали. При этом вносить
@@ -446,7 +448,7 @@ https://gist.github.com/4202651
 написан с использованием
 [декларативного фреймворка из блока i-bem](http://bem.github.com/bem-bl/sets/common-desktop/i-bem/i-bem.ru.html),
 у меня есть возможность изменить (переопределить или доопределить) поведение блока
-на своём уровне.<sup>[4](#ref4)</sup>
+на своём уровне.
 
     bem create -l desktop.blocks -T js -b box
     
@@ -503,18 +505,6 @@ https://gist.github.com/4195879
     ./node_modules/bem/bin/bem make
 
 -------------
-<sup><a name="ref1"></a>1</sup> Репозиторий описан в ревизии
-[4e24d717e6](https://github.com/bem/full-stack-starter/commit/4e24d717e614aa3d7d3c060a6301b68ff6ec6424).
-
-<sup><a name="ref2"></a>2</sup> Подробнее о `bem server` можно узнать из докладов
-Владимира Алаева [Новые возможности bem tools](http://events.yandex.ru/talks/289/) и
-Сергея Белова [bem server: Система сборки фронтенда](http://events.yandex.ru/talks/154/).
-
-<sup><a name="ref3"></a>3</sup> Информацию о синтаксисе шаблонизатора BEMHTML можно найти в референсе
-https://github.com/bem/bemhtml/blob/master/common.docs/reference/reference.ru.md
-
-<sup><a name="ref4"></a>4</sup> Об особенностях БЭМ-JavaScript можно узнать из доклада
-Владимира Варанкина «[БЭМ и JavaScript: Зачем мы написали JS-фреймворк?](http://events.yandex.ru/talks/290/)»
 
 <sup>creadits</sup> За подготовку разметки сайта большое спасибо
 [tyv](https://github.com/tyv) и [gela-d](https://github.com/gela-d).
