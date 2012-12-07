@@ -183,6 +183,8 @@ https://gist.github.com/4195433
     }
 https://gist.github.com/4175742
 
+<img src="http://img-fotki.yandex.ru/get/5414/14441195.26/0_6f0bb_f854bb4e_XL.jpg" width="529" height="266" title="Дополнительная разметка для существующего блока" alt="Дополнительная разметка для существующего блока" border="0"/>
+
 Для получившейся разметки создаются свои CSS-правила:
 
     $ bem create -l desktop.blocks/ -T css -b b-page
@@ -195,6 +197,8 @@ https://gist.github.com/4175742
     $ bem create -l desktop.blocks/ -T css -b head
 
 Контент для файла `desktop.blocks/head/head.css`: https://gist.github.com/4175776.
+
+<img src="http://img-fotki.yandex.ru/get/6505/14441195.26/0_6f0bc_d000a7a2_L.jpg" width="500" height="129" title="Шапка с рамкой" alt="Шапка с рамкой" border="0"/>
 
 ## BEMHTML шаблоны
 BEMHTML шаблоны могут не просто определять теги, которым представлен блок, и их
@@ -246,6 +250,8 @@ https://gist.github.com/4176078
     }
 https://gist.github.com/4176118
 
+<img src="http://img-fotki.yandex.ru/get/5804/14441195.26/0_6f0bd_96a8feff_XL.jpg" width="765" height="346" title="Разметка для списка товаров" alt="Разметка для списка товаров" border="0"/>
+
 Шаблон может создавать не только элементы блока, но и другие блоки. Например,
 цену товара можно завернуть в ссылку, используя для этого блок `b-link` из
 библиотеки `bem-bl`.
@@ -271,13 +277,19 @@ https://gist.github.com/4176996
     }
 https://gist.github.com/4177113
 
+<img src="http://img-fotki.yandex.ru/get/6502/14441195.26/0_6f0be_d0eebdea_XL.jpg" width="765" height="247" title="Использование блока b-link" alt="Использование блока b-link" border="0"/>
+
 Также нужно пометить элементы о новых товарах модификатором и добавить
 выравнивающих элементов.<br/>
 https://gist.github.com/4177157
 
-CSS для блока можно скопировать отсюда https://gist.github.com/4177163.
+CSS для блока можно скопировать отсюда https://gist.github.com/4177163.<br/>
+Создавать блок отдельно в технологии CSS не нужно, потому что он изначально был создан
+со всеми необходимыми файлами.
 
-Понадобится и CSS для IE.
+<img src="http://img-fotki.yandex.ru/get/4118/14441195.26/0_6f0bf_cc35488c_L.jpg" width="500" height="472" title="Список товаров с примененным CSS" alt="Список товаров с примененным CSS" border="0"/>
+
+Понадобится и CSS для IE. Он не входит в список технологий по умолчанию.
 
     $ bem create block -l desktop.blocks/ -T ie.css goods
 
@@ -289,7 +301,7 @@ CSS для блока можно скопировать отсюда https://gis
 JavaScript блока. Для этого у блока можно описать зависимости, это делается
 представлением блока в технологии `deps.js`.
 
-    $ bem create block -l desktop.blocks/ -T deps.js goods
+    $ bem create -l desktop.blocks/ -T deps.js -b goods
 
 Можно воспользоваться нестрогой зависимостью `shouldDeps`, указав, что нужен блок `b-link`.
 
@@ -299,7 +311,6 @@ JavaScript блока. Для этого у блока можно описать
         ]
     })
 https://gist.github.com/4177031
-
 
 ## Подключение библиотек
 Хочется представить шапку и каждый товар модными прямоугольниками с тенью. Блок
