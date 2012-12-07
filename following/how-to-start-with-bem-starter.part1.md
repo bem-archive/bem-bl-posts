@@ -380,6 +380,21 @@ https://gist.github.com/4177250
     }
 https://gist.github.com/4177292
 
+<img src="http://img-fotki.yandex.ru/get/6611/14441195.26/0_6f0c2_876e1bf5_XL.jpg" width="524" height="287" title="Микс двух блоков" alt="Микс двух блоков" border="0"/>
+
+Не забудьте записать блок `box` в зависимости блока `head`
+
+    $ bem create -l desktop.blocks/ -T deps.js -b head
+    
+    ({
+        shouldDeps: [
+            { block: 'box' }
+        ]
+    })
+https://gist.github.com/4235143
+
+<img src="http://img-fotki.yandex.ru/get/5803/14441195.26/0_6f0c4_4e3f9249_XL.jpg" width="800" height="238" title="Шапка с блоком box" alt="Шапка с блоком box" border="0"/>
+
 Смешивать можно не только блоки,
 но и элементы с блоками.<br/>
 В шаблоне блока `goods` смешаем каждый элемент `item` с блоком `box`.
@@ -390,6 +405,10 @@ https://gist.github.com/4177292
         mix: [{ block: 'box' }],
         content: ...
 https://gist.github.com/4177350
+
+<img src="http://img-fotki.yandex.ru/get/6502/14441195.26/0_6f0c3_534d86d7_XL.jpg" width="713" height="372" title="Микс элемента и блока" alt="Микс элемента и блока" border="0"/>
+
+<img src="http://img-fotki.yandex.ru/get/6511/14441195.26/0_6f0c5_bcef9ce9_L.jpg" width="500" height="286" title="Товары в блоке box" alt="Товары в блоке box" border="0"/>
 
 ## Декларативный JavaScript
 ### Блоки с JavaScript функциональностью
