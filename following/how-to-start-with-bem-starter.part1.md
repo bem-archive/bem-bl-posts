@@ -37,9 +37,9 @@ command line интерфейсом для оперирования БЭМ-су�
 ## Создание собственного репозитория проекта
 Проще всего создать свой проект простым копированием существующего репозитория
 с подходящей структорой. Для проекта с использованием полного стека БЭМ подойдёт
-репозиторий [full-stack-starter](https://github.com/bem/full-stack-starter).
+репозиторий [project-stub](https://github.com/bem/project-stub).
 
-    $ git clone git://github.com/bem/full-stack-starter.git my-pretty-project
+    $ git clone git://github.com/bem/project-stub.git my-pretty-project
     $ cd my-pretty-project/
     $ rm -rf .git
     $ git init
